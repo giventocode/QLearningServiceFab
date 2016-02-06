@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="QTicTacToe.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QTicTacToe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <x:Double x:Key="FontSize">40</x:Double>
+        <Style x:Key="TttButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundTransparentBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="8,4,8,4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+            <Button  Content="{Binding Cell1}" Tag="1"  Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click"  />
+            <Button  Content="{Binding Cell2}" Tag="2" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1"   d:LayoutOverrides="LeftPosition, RightPosition, TopPosition,  BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" />
+            <Button  Content="{Binding Cell3}" Tag="3" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="2"   d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" />
+
+            <Button  Content="{Binding Cell4}" Tag="4" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1"  d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" Style="{StaticResource TttButtonStyle}"  />
+            <Button  Content="{Binding Cell5}" Tag="5" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1"   d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click"  />
+            <Button  Content="{Binding Cell6}" Tag="6" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1"  Grid.Column="2"   d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" />
+
+
+            <Button  Content="{Binding Cell7}" Tag="7" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2"  d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" />
+            <Button  Content="{Binding Cell8}" Tag="8" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="1"   d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" />
+            <Button  Content="{Binding Cell9}" Tag="9" Margin="0,0,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2"  Grid.Column="2"   d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"  Click="Play_Click" />
+
+        </Grid>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{Binding GameStatus}" FontSize="30" Margin="63,100,0,0" />
+            <Button Content="Machine as Player 1" Grid.Column="1" HorizontalAlignment="Left" Margin="63,5,0,0" VerticalAlignment="Top" Click ="MachinePlayer1_Click"  FontFamily="Global User Interface" Width="179" />
+            <Button Content="Reset" Grid.Column="1" HorizontalAlignment="Left" Margin="63,5,0,0" VerticalAlignment="Top" Click="Reset_Click"  Width="179"/>            
+
+        </StackPanel>
+        
+    </Grid>
+    
+</Page>

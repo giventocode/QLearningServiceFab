@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Section Name="QTicTacToeStateActorServiceReplicatorConfig">
+      <Parameter Name="ReplicatorEndpoint" Value="QTicTacToeStateActorServiceReplicatorEndpoint" />
+   </Section>
+   <Section Name="QTicTacToeStateActorServiceReplicatorSecurityConfig">
+      <Parameter Name="CredentialType" Value="None" />
+   </Section>
+   <Section Name="QTicTacToeStateActorServiceLocalStoreConfig">
+      <Parameter Name="MaxAsyncCommitDelayInMilliseconds" Value="100" />
+      <Parameter Name="MaxVerPages" Value="32768" />
+   </Section>
+   <Section Name="QTrainedStateActorServiceReplicatorConfig">
+      <Parameter Name="ReplicatorEndpoint" Value="QTrainedStateActorServiceReplicatorEndpoint" />
+   </Section>
+   <Section Name="QTrainedStateActorServiceReplicatorSecurityConfig">
+      <Parameter Name="CredentialType" Value="None" />
+   </Section>
+   <Section Name="QTrainedStateActorServiceLocalStoreConfig">
+      <Parameter Name="MaxAsyncCommitDelayInMilliseconds" Value="100" />
+      <Parameter Name="MaxVerPages" Value="32768" />
+   </Section>
+</Settings>
