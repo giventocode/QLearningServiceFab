@@ -19,7 +19,7 @@
   http://CLUSTER:PORT/api/qtrainer/start/9
   </br>
   </br>
-  *Note* The training may take a more than 10 minutes. 
+  *Note* The training might take more than 10 minutes to complete. 
 </br>
 </br>
 4.- Configure the client app to point to your QTrainer API. In App.cs locate and modify the following with your server and port information:
