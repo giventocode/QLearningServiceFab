@@ -17,7 +17,7 @@ public abstract class QState : StatefulActor, IQState, IRemindable
  internal abstract IEnumerable<int> GetTransitions(int stateToken);
  internal abstract IEnumerable<IPastState> GetRewardingQStates(int stateToken);
 
- [Readonly]
+ 
  public Task StartTrainingAsync(int initialTransitionValue)
  {
      return RegisterReminderAsync("StartTransition",
@@ -25,7 +25,6 @@ public abstract class QState : StatefulActor, IQState, IRemindable
          , TimeSpan.FromMilliseconds(0), TimeSpan.FromMilliseconds(-1), ActorReminderAttributes.Readonly);
  }
 
- [Readonly]
  public Task TransitionAsync(int? previousStateToken, int transitionValue)
  {
      var rwd = GetReward(previousStateToken, transitionValue);
@@ -50,7 +49,6 @@ public abstract class QState : StatefulActor, IQState, IRemindable
          return Task.WhenAll(ts);
    }
    
-[Readonly]
 public Task SetRewardAsync(int stateToken, double stateReward, double discount)
  {
      var t = new List<Task>();
