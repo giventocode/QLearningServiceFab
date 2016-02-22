@@ -24,7 +24,7 @@
    </CodePackage>
    <Resources>
       <Endpoints>
-         <Endpoint Name="QAPITypeEndpoint" Protocol="http" Type="Input" />
+         <Endpoint Name="QAPITypeEndpoint" Protocol="http" Type="Input" Port="8686" />
       </Endpoints>
    </Resources>
 </ServiceManifest>
