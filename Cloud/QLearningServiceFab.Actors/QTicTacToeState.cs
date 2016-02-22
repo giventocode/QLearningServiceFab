@@ -15,15 +15,15 @@ namespace QLearningServiceFab.Actors
 
             if (game.IsBlock)
             {
-                rwd = new TicTacToeReward() { Discount = .5, Value = 95, IsAbsorbent = false, StateToken = game.StateToken };
+                rwd = new TicTacToeReward() { Discount = .5, Value = 95, IsAbsorbing = false, StateToken = game.StateToken };
             }
             if (game.IsWin)
             {
-                rwd = new TicTacToeReward() { Discount = .9, Value = 100, IsAbsorbent = true, StateToken = game.StateToken };
+                rwd = new TicTacToeReward() { Discount = .9, Value = 100, IsAbsorbing = true, StateToken = game.StateToken };
             }
             if (game.IsTie)
             {
-                rwd = new TicTacToeReward() { Discount = .9, Value = 50, IsAbsorbent = true, StateToken = game.StateToken };
+                rwd = new TicTacToeReward() { Discount = .9, Value = 50, IsAbsorbing = true, StateToken = game.StateToken };
             }
             return rwd;
         }

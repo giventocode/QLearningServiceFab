@@ -11,7 +11,7 @@ namespace QLearningServiceFab.Actors
         [DataMember]
         public double Discount { get; set; }
         [DataMember]
-        public bool IsAbsorbent { get; set; }
+        public bool IsAbsorbing { get; set; }
         [DataMember]
         public int StateToken { get; set; }
     }

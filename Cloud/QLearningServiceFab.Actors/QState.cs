@@ -37,7 +37,7 @@ public abstract class QState : StatefulActor, IQState, IRemindable
 
      var ts = new List<Task>();
 
-     if (rwd == null || !rwd.IsAbsorbent)
+     if (rwd == null || !rwd.IsAbsorbing)
          ts.AddRange(GetTransitions(stateToken).Select(p => ActorProxy.Create<IQState>(ActorId.NewId(), "fabric:/QLearningServiceFab").TransitionAsync(stateToken, p)));
 
      if (rwd != null)

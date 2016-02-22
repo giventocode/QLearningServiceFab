@@ -4,7 +4,7 @@
     {
         double Value { get; set; }
         double Discount { get; set; }
-        bool IsAbsorbent { get; set; }
+        bool IsAbsorbing { get; set; }
         int StateToken { get; set; }
     }
 }
